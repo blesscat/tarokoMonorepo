@@ -1,11 +1,19 @@
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element {
+import './globals.css'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  viewport: 'width=device-width, initial-scale=1, viewport-fit=cover'
+}
+
+
+
+export default function RootLayout({ children, }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <title> taroko monorepo </title>
+      </head>
       <body>{children}</body>
     </html>
-  );
+  )
 }

@@ -1,10 +1,18 @@
-import { Button, Header } from "ui";
+import { Button, Header } from 'ui'
+import { server } from 'api'
+import Test from './test'
+import styles from './test.module.scss'
 
-export default function Page(): JSX.Element {
+console.log('api', server.getContacts())
+
+export default async function Page() {
+  const contacts = await server.getContacts()
+  console.log(contacts.data, contacts.statusCode)
   return (
     <>
-      <Header text="Web" />
+      <Header />
       <Button />
+      <Test />
     </>
-  );
+  )
 }
