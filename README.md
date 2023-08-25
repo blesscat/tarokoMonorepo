@@ -23,5 +23,6 @@ pnpm install
 pnpm dev
 ```
 
-to start Swagger UI of mock server at http://localhost:3000/api-docs/
+to start Swagger UI of mock server at http://localhost:3000/api-docs
+
 to start the Web App in development mode at http://localhost:3001
