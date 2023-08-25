@@ -38,10 +38,10 @@ export default class Base {
     return async (_url_: string, { arg }: Readonly<{ arg?: { body?: T['body'], query?: T['query'], path?: string } }>) => {
       const _path = arg?.path ? `/${arg.path}` : ''
       const _url = `${this.baseUrl}${this.apiPrefix}${url}${_path}${this.genParams(arg?.query)}`
-      const _method = method || 'get'
+      const _method = method || 'GET'
 
       const getBody = () => {
-        if (method === 'get') return null
+        if (method === 'GET') return null
         return arg?.body
       }
 
@@ -61,11 +61,11 @@ export default class Base {
   protected apiGenerator<T extends ApiType<T['res']>>({ url, method }: IApiInit): (req?: Request<T['query'], T['body']>, options?: any) => Promise<T['res']> {
 
     return async (request?: Request<T['query'], T['body']>, options?: any) => {
-      const _method = request?.method || method || 'get'
+      const _method = request?.method || method || 'GET'
       const _request = { ...request, body: null }
 
       const getBody = () => {
-        if (_method === 'get') return null
+        if (_method === 'GET') return null
         return request?.body
       }
 

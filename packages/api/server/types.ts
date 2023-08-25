@@ -31,5 +31,12 @@ export interface IDelContact {
   query: { id: number }
   body: null
   res: WithData<IContact>
+}
 
+export interface IUpdateContact {
+  query: null
+  body: {
+    info: Partial<IContact>
+  }
+  res: WithData<IContact>
 }

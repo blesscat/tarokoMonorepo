@@ -1,4 +1,4 @@
-type IMethod = 'get' | 'post' | 'put' | 'patch' | 'delete'
+type IMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
 export interface IMockData {
   method?: IMethod

@@ -21,6 +21,11 @@ export const createRipple = (event: any, ripple?: string) => {
   if (rippleDOM) rippleDOM.remove()
 
   el.appendChild(circle)
+
+  setTimeout(() => {
+    const rippleDOM = el.getElementsByClassName(style.ripple)[0]
+    if (rippleDOM) rippleDOM.remove()
+  }, 600)
 }
 
 export default createRipple

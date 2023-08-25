@@ -1,41 +1,52 @@
 'use client'
 import { twMerge } from 'tailwind-merge'
-import { useMemo, useEffect } from 'react'
+import { useMemo, useEffect, useState } from 'react'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { Button } from 'ui'
 
 import { useContactsStore } from '@/store'
+import UpdateContactModal from '@/container/UpdateContactModal'
 
 import { useDelContact } from './hooks'
 import type { IContact } from 'api/server/types'
 
 const Contact = ({ contact }: { contact: IContact }) => {
-  const { trigger: delContact } = useDelContact()
+  const [showEdit, setShowEdit] = useState(false)
+  const { trigger: delContact, success, error } = useDelContact()
+
+  const handleDelContact = async () => {
+    const res = await delContact({ path: String(contact.id) })
+    if (res.statusCode === 200) success(contact)
+    else error(contact)
+  }
 
   return (
-    <div className={twMerge(
-      'p-3 border shadow w-full mt-3',
-      'sm:max-w-[400px] sm:min-w-[400px] sm:mr-3'
-    )}>
-      <div className='flex items-center justify-between'>
-        <div className='flex items-center'>
-          <BsFillPersonFill color='#4c9eea' size='2rem' />
-          <div> {`${contact.first_name} ${contact.last_name}`} </div>
+    <>
+      <div className={twMerge(
+        'p-3 border shadow w-full mt-3',
+        'sm:max-w-[400px] sm:min-w-[400px] sm:mr-3'
+      )}>
+        <div className='flex items-center justify-between'>
+          <div className='flex items-center'>
+            <BsFillPersonFill color='#4c9eea' size='2rem' />
+            <div> {`${contact.first_name} ${contact.last_name}`} </div>
+          </div>
+
+          <div className='flex flex-col space-y-2'>
+            <Button variant='primaryXs' onClick={() => setShowEdit(true)}> Edit </Button>
+            <Button variant='primaryXs' onClick={handleDelContact}> Delete </Button>
+          </div>
         </div>
 
-        <div className='flex flex-col space-y-2'>
-          <Button variant='primaryXs' onClick={() => console.log('edit')}> Edit </Button>
-          <Button variant='primaryXs' onClick={() => delContact({ path: String(contact.id) })}> Delete </Button>
+        <div className='text-xs mt-1'>
+          {`Job: ${contact.job}`}
+        </div>
+        <div className='text-xs mt-1'>
+          {`Description: ${contact.description}`}
         </div>
       </div>
-
-      <div className='text-xs mt-1'>
-        {`Job: ${contact.job}`}
-      </div>
-      <div className='text-xs mt-1'>
-        {`Description: ${contact.description}`}
-      </div>
-    </div>
+      <UpdateContactModal show={showEdit} id={contact.id} onClose={() => setShowEdit(false)} />
+    </>
   )
 }
 

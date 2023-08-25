@@ -23,6 +23,11 @@ export const createRipple = (event: any, ripple: boolean | string) => {
   if (rippleDOM) rippleDOM.remove()
 
   button.appendChild(circle)
+
+  setTimeout(() => {
+    const rippleDOM = button.getElementsByClassName(style.ripple)[0]
+    if (rippleDOM) rippleDOM.remove()
+  }, 600)
 }
 
 export const hasRipple = (ripple?: boolean | string) => typeof ripple === 'boolean' || typeof ripple === 'string'

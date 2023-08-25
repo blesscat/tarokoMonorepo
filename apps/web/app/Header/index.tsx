@@ -7,13 +7,20 @@ import { twMerge } from 'tailwind-merge'
 import { Ripple, Button } from 'ui'
 
 import AddContactModal from '@/container/AddContactModal'
+import SideBar from '@/container/SideBar'
 import styles from './header.module.scss'
 
 const Menu = ({ className }: { className?: string }) => {
+  const [showMenu, setShowMenu] = useState(false)
+
   return (
-    <Ripple className={twMerge('rounded-lg', className)}>
-      <BsList size='2rem' />
-    </Ripple>
+    <div className='relative'>
+      <Ripple className={twMerge('rounded-lg', className)} onClick={() => setShowMenu(true)}>
+        <BsList size='2rem' />
+      </Ripple>
+
+      <SideBar show={showMenu} onClose={() => setShowMenu(false)} />
+    </div>
   )
 }
 
@@ -36,10 +43,10 @@ const AddContact = ({ className }: { className?: string }) => {
   const [show, setShow] = useState(false)
 
   return (
-    <>
+    <div>
       <Button variant='primary' className={className} onClick={() => setShow(true)}> Add Contact </Button>
       <AddContactModal show={show} onClose={() => setShow(false)} />
-    </>
+    </div>
   )
 }
 

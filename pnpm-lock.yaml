@@ -59,6 +59,9 @@ importers:
       api:
         specifier: workspace:*
         version: link:../../packages/api
+      framer-motion:
+        specifier: ^10.16.1
+        version: 10.16.1(react-dom@18.2.0)(react@18.2.0)
       next:
         specifier: ^13.4.19
         version: 13.4.19(react-dom@18.2.0)(react@18.2.0)(sass@1.66.1)
@@ -161,7 +164,7 @@ importers:
     dependencies:
       framer-motion:
         specifier: ^10.16.1
-        version: 10.16.1(react@18.2.0)
+        version: 10.16.1(react-dom@18.2.0)(react@18.2.0)
       react-icons:
         specifier: ^4.10.1
         version: 4.10.1(react@18.2.0)
@@ -2979,7 +2982,7 @@ packages:
     resolution: {integrity: sha512-/KxoyCnPM0GwYI4NN0Iag38Tqt+od3/mLuguepLgCAKPn0ZhC544nssAW0tG2/00zXEYl9W+7hwAIpLHo6Oc7Q==}
     dev: true
 
-  /framer-motion@10.16.1(react@18.2.0):
+  /framer-motion@10.16.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-K6TXr5mZtitC/dxQCBdg7xzdN0d5IAIrlaqCPKtIQVdzVPGC0qBuJKXggHX1vjnP5gPOFwB1KbCCTWcnFc3kWg==}
     peerDependencies:
       react: ^18.0.0
@@ -2991,6 +2994,7 @@ packages:
         optional: true
     dependencies:
       react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
       tslib: 2.5.0
     optionalDependencies:
       '@emotion/is-prop-valid': 0.8.8
