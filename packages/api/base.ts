@@ -34,6 +34,30 @@ export default class Base {
     this.headers = headers
   }
 
+  protected swrApiGenerator<T extends ApiType<T['res']>>({ url, method }: IApiInit) {
+    return async (_url_: string, { arg }: Readonly<{ arg?: { body?: T['body'], query?: T['query'], path?: string } }>) => {
+      const _path = arg?.path ? `/${arg.path}` : ''
+      const _url = `${this.baseUrl}${this.apiPrefix}${url}${_path}${this.genParams(arg?.query)}`
+      const _method = method || 'get'
+
+      const getBody = () => {
+        if (method === 'get') return null
+        return arg?.body
+      }
+
+      const res = await fetch(_url, {
+        method: _method,
+        headers: {
+          'Content-type': 'application/json',
+          ...this.headers
+        },
+        ...(getBody() && { body: JSON.stringify(getBody()) })
+      })
+
+      return await res.json()
+    }
+  }
+
   protected apiGenerator<T extends ApiType<T['res']>>({ url, method }: IApiInit): (req?: Request<T['query'], T['body']>, options?: any) => Promise<T['res']> {
 
     return async (request?: Request<T['query'], T['body']>, options?: any) => {

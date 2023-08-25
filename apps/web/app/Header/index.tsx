@@ -1,10 +1,12 @@
 'use client'
-
-import { Ripple, Button } from 'ui'
+import { useState } from 'react'
+import { BsList } from 'react-icons/bs'
 import { useRouter } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
 
-import { BsList } from 'react-icons/bs'
+import { Ripple, Button } from 'ui'
+
+import AddContactModal from '@/container/AddContactModal'
 import styles from './header.module.scss'
 
 const Menu = ({ className }: { className?: string }) => {
@@ -29,18 +31,27 @@ const Logo = ({ className }: { className?: string }) => {
   )
 }
 
+
 const AddContact = ({ className }: { className?: string }) => {
+  const [show, setShow] = useState(false)
+
   return (
-    <Button variant='primary' className={className} onClick={() => console.log('add conact')}> Add Contact </Button>
+    <>
+      <Button variant='primary' className={className} onClick={() => setShow(true)}> Add Contact </Button>
+      <AddContactModal show={show} onClose={() => setShow(false)} />
+    </>
   )
 }
 
 export default function Header() {
   return (
-    <header className={twMerge(styles.container, 'px-0 sm:px-3')}>
-      <Menu className='flex sm:hidden' />
-      <Logo />
-      <AddContact className='hidden sm:flex' />
-    </header>
+    <div className='relative'>
+      <header className={twMerge(styles.container, 'px-0 sm:px-3')}>
+        <Menu className='flex sm:hidden' />
+        <Logo />
+        <AddContact className='hidden sm:flex' />
+      </header>
+      <div className='h-[40px]' />
+    </div>
   )
 }

@@ -1,0 +1,14 @@
+.format {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 10px;
+    background-color: #cb0202;
+    margin-right: 10px;
+  }
+}

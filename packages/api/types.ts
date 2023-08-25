@@ -1,7 +1,7 @@
 type IMethod = 'get' | 'post' | 'put' | 'patch' | 'delete'
 
 export interface IMockData {
-  method?: IMethod 
+  method?: IMethod
   timeout?: number
   response?: () => any
 }
@@ -13,8 +13,8 @@ export type IApiInit = {
 }
 
 export type ApiType<TRes> = {
-  query: {[key: string]: string | number} | null,
-  body: {[key: string]: string | number} | null,
+  query: { [key: string]: string | number } | null,
+  body: { [key: string]: any } | null,
   res: TRes
 }
 

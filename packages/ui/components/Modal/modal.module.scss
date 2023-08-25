@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+}
+
+@keyframes in {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  1% {
+    transform: scale(0.5);
+  }
+  90% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.in {
+  position: absolute;
+  animation-name: in;
+  animation-duration: 0.12s;
+}
+
+@keyframes shack {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.shack {
+  animation-name: shack;
+  animation-duration: 0.052s;
+}
+
+@keyframes remove {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0.3;
+  }
+}
+
+.remove {
+  animation-name: remove;
+  animation-duration: 0.12s;
+}
