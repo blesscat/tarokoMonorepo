@@ -11,8 +11,8 @@ export default async function Page() {
   return (
     <>
       <Header />
-      <Title />
-      <main>
+      <main className='max-w-7xl w-full mx-auto'>
+        <Title />
         <Contacts contacts={contacts?.data} />
       </main>
       <ToastContainer />

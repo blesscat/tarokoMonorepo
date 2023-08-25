@@ -1,5 +1,4 @@
 'use client'
-import { twMerge } from 'tailwind-merge'
 import { useMemo, useEffect, useState } from 'react'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { Button } from 'ui'
@@ -22,10 +21,7 @@ const Contact = ({ contact }: { contact: IContact }) => {
 
   return (
     <>
-      <div className={twMerge(
-        'p-3 border shadow w-full mt-3',
-        'sm:max-w-[400px] sm:min-w-[400px] sm:mr-3'
-      )}>
+      <div className='p-3 border shadow w-full'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center'>
             <BsFillPersonFill color='#4c9eea' size='2rem' />
@@ -63,7 +59,7 @@ export default function Contacts({ contacts }: { contacts: IContact[] }) {
   }, [state.sort, state.contacts, contacts])
 
   return (
-    <div className='flex flex-wrap px-3'>
+    <div className='grid gap-3 px-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
       {
         _contacts.map(contact => <Contact contact={contact} key={contact.id} />)
       }

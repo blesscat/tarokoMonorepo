@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { render, screen } from '@/__test__/test-utils'
+import { render, screen } from '@testing-library/react'
 import { createButton } from './index'
 
 const Button = createButton()
