@@ -16,7 +16,7 @@ export const useDelContact = () => {
     autoClose: 3000
   })
 
-  const error = (contact: IContact) => toast.error(`del ${contact.first_name} ${contact.last_name} success!`, {
+  const error = (contact: IContact) => toast.error(`del ${contact.first_name} ${contact.last_name} failure!`, {
     autoClose: 3000
   })
 

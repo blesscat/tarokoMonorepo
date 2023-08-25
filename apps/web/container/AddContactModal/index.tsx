@@ -19,7 +19,7 @@ export default function AddContactModal(props: { show: boolean, onClose: () => v
     autoClose: 3000
   })
 
-  const error = () => toast.error('add contact error!', {
+  const error = () => toast.error('add contact failure!', {
     autoClose: 3000
   })
 
