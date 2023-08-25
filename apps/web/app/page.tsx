@@ -1,7 +1,6 @@
-import { Button, Header } from 'ui'
 import { server } from 'api'
-import Test from './test'
-import styles from './test.module.scss'
+
+import Header from './componets/Header'
 
 console.log('api', server.getContacts())
 
@@ -11,8 +10,6 @@ export default async function Page() {
   return (
     <>
       <Header />
-      <Button />
-      <Test />
     </>
   )
 }

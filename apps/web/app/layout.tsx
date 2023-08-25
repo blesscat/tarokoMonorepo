@@ -13,7 +13,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
       <head>
         <title> taroko monorepo </title>
       </head>
-      <body>{children}</body>
+      <body className='flex flex-col'>{children}</body>
     </html>
   )
 }

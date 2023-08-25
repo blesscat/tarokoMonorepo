@@ -1,3 +1,3 @@
 // component exports
-export * from "./Header";
-export * from "./button";
+export { default as Ripple } from './components/Ripple'
+export { default as Button } from './components/Button'

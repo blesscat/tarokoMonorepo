@@ -1,5 +1,4 @@
 import { twMerge } from 'tailwind-merge'
-import cx from 'classnames'
 
 import Loading from './Loading'
 import type { InitAttr, Variants, InstanceProps } from './types'
@@ -16,21 +15,21 @@ const removeActiveClasses = (className: string) => className.replace(/ active:\S
 
 const createInstance =
   <V,>(def: Variants<V>) =>
-  (props: InstanceProps<typeof def.variants>) => {
-    const { variant = 'primary', loading, ripple, type = 'button', ...restProps } = props
+    (props: InstanceProps<typeof def.variants>) => {
+      const { variant = 'primary', loading, ripple, type = 'button', ...restProps } = props
 
-    const _ripple = hasRipple(ripple) ? ripple : def.variants[variant as keyof V].ripple
+      const _ripple = hasRipple(ripple) ? ripple : def.variants[variant as keyof V].ripple
 
-    let _className = twMerge(def.variants[variant as keyof V].className, props.className)
-    if (props.loading) _className = removeActiveClasses(_className)
+      let _className = twMerge(def.variants[variant as keyof V].className, props.className)
+      if (props.loading) _className = removeActiveClasses(_className)
 
-    return (
-      <button {...restProps} type={type} className={cx(_className, style.main)} onClick={handleClick(loading, _ripple, props.onClick)}>
-        <span className={props.loading ? 'invisible' : ''}>{props.children}</span>
-        {props.loading && <Loading />}
-      </button>
-    )
-  }
+      return (
+        <button {...restProps} type={type} className={twMerge(_className, style.main, 'cursor-default sm:cursor-pointer')} onClick={handleClick(loading, _ripple, props.onClick)}>
+          <span className={props.loading ? 'invisible' : ''}>{props.children}</span>
+          {props.loading && <Loading />}
+        </button>
+      )
+    }
 
 const defaultAttr: InitAttr = {
   className: 'h-[40px] inline-flex items-center justify-center px-[15px]',

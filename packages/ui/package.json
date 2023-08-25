@@ -17,5 +17,10 @@
     "react": "^18.2.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "react-icons": "^4.10.1",
+    "sass": "^1.66.1",
+    "tailwind-merge": "^1.14.0"
   }
 }

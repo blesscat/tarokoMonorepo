@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
 import { RippleDivProps } from './types'
 import createRippleAnimation from './createRippleAnimation'
@@ -16,13 +16,7 @@ export const createRipple = (init?: { ripple?: string }) => {
     const { onClick, ripple, disabled, className, ...rest } = props
 
     return (
-      <div {...rest} className={cx(style.main, className)} onClick={disabled ? () => {} : handleOnClick(ripple || initRipple, onClick)} />
+      <div {...rest} className={twMerge(style.main, 'cursor-default sm:cursor-pointer', className)} onClick={disabled ? () => { } : handleOnClick(ripple || initRipple, onClick)} />
     )
   }
 }
-
-const Ripple = {
-  div: createRipple()
-}
-
-export default Ripple
