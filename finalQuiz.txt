@@ -1,0 +1,42 @@
+Frature Requirements
+  ● The following elements must be visible per contact: First Name, Last Name, Job and Description.
+    - done. 
+  ● There are separate UI elements that allow the user to activate each CRUD operation.
+    - done.
+  ● When clicked, each operation should show a success/failure confirmation to the user which automatically disappears after 3-5 seconds.
+    - I am using react-toastify.
+  ● Contacts can be sorted in both descending and ascending order by First Name and Last Name.
+    - Done.
+
+Technical Requirements
+  ● The application must be written using React as the front-end (plus TypeScript).
+    - using Turborepo, Next.js, TypeScript and React
+  ● The application must be responsive for desktop and mobile.
+    - done.
+  ● Errors are (validations, servers errors…) correctly handled and showcased to the user.
+    - I have handled the statusCode in the API response. I am not sure if the server is unresponsive, but I also know how to handle it if necessary.
+  ● You must write your own CSS for this project.
+    - using CSS module, sass and tailwindcss
+  ● You may use any HTTP client for the data requests.
+    - using my own library. 
+  ● The application should run correctly on the latest versions of Chrome, Firefox and Safari.
+    - I do tested on Chrome, Firefox and Edge, however I don't have a MAC on hand, so I can't test it on Safari.
+  ● The application must be tested using React-related best practices (unit tests, snapshots…)
+    - I know how to use Jest for unit tests and I am also familiar with using Cypress for end-to-end tests.
+      However, I've spent too much time on building the architecture, and I need more time to create a test environment.
+  ● A README file must be provided that explains how to run the application locally.
+    - done.
+
+Extra Points:
+  ● Sass and CSS modules are used.
+    - using CSS module, sass and tailwindcss
+  ● CSS basic animations to beautify the UI are used.
+    - at my own UI library.
+  ● The application is written in Next.js.
+    - using Next.js 13
+  ● ESLint is added to the repo.
+    - done.
+  ● Validation is provided when entering new contact data.
+    - using react-hook-form
+  ● The application is deployed for public access
+    - on my github https://github.com/blesscat/tarokoMonorepo
