@@ -14,8 +14,8 @@ const Menu = ({ className }: { className?: string }) => {
   const [showMenu, setShowMenu] = useState(false)
 
   return (
-    <div className='relative'>
-      <Ripple className={twMerge('rounded-lg', className)} onClick={() => setShowMenu(true)}>
+    <div className={twMerge('relative', className)}>
+      <Ripple className='rounded-lg' onClick={() => setShowMenu(true)}>
         <BsList size='2rem' />
       </Ripple>
 
@@ -33,7 +33,9 @@ const Logo = ({ className }: { className?: string }) => {
       'sm:w-auto sm:relative sm:pointer-events-auto',
       className)}
     >
-      <Ripple className='flex flex-1 justify-center px-1 rounded-lg font-bold' onClick={() => router.push('/')}>Contact List</Ripple>
+      <Ripple className='flex flex-1 justify-center px-1 rounded-lg font-bold' onClick={() => router.push('/')}>
+        <h1> Contact List </h1>
+      </Ripple>
     </div>
   )
 }
@@ -43,8 +45,8 @@ const AddContact = ({ className }: { className?: string }) => {
   const [show, setShow] = useState(false)
 
   return (
-    <div>
-      <Button variant='primary' className={className} onClick={() => setShow(true)}> Add Contact </Button>
+    <div className={className}>
+      <Button variant='primary' onClick={() => setShow(true)}> Add Contact </Button>
       <AddContactModal show={show} onClose={() => setShow(false)} />
     </div>
   )

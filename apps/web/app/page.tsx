@@ -3,6 +3,7 @@ import { server } from 'api'
 import Header from './Header'
 import Title from './Title'
 import Contacts from './Contacts'
+import { ToastContainer } from 'react-toastify'
 
 export default async function Page() {
   const contacts = await server.getContacts({ query: { t: Date.now() } })
@@ -14,6 +15,7 @@ export default async function Page() {
       <main>
         <Contacts contacts={contacts?.data} />
       </main>
+      <ToastContainer />
     </>
   )
 }

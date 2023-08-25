@@ -19,7 +19,7 @@ export default function SideBar(props: { show: boolean, onClose: () => void }) {
             exit={{ opacity: 0 }}
           >
           </motion.div>
-          <motion.div className='fixed z-[21] bg-white top-0 h-screen w-52'
+          <motion.div className='fixed z-[21] bg-white top-0 left-0 h-screen w-52'
             initial={{ x: -400 }}
             animate={{ x: 0 }}
             exit={{ x: -400 }}
