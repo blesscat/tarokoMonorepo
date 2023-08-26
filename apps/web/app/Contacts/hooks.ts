@@ -33,3 +33,43 @@ export const useDelContact = () => {
     error
   }
 }
+
+export const useDuplicateContact = (contact: IContact) => {
+  const addContact = useContactsStore((state) => state.addContact)
+  const { trigger, isMutating, data: addContactData } = useSWRMutation('server.swrAddContacts', server.swrAddContact)
+
+  const success = () => toast.success('duplacate contact success!', {
+    autoClose: 3000
+  })
+
+  const error = () => toast.error('duplacate contact failure!', {
+    autoClose: 3000
+  })
+
+  const duplicateContact = async () => {
+    const res = await trigger({
+      body: {
+        contact: {
+          first_name: contact.first_name,
+          last_name: contact.last_name,
+          job: contact.job,
+          description: contact.description
+        }
+      }
+    })
+
+    if (res.statusCode === 201) success()
+    else error()
+  }
+
+  useEffect(() => {
+    if (!addContactData?.data) return
+
+    addContact(addContactData.data)
+  }, [addContactData?.data])
+
+  return {
+    duplicateContact,
+    loading: isMutating
+  }
+}

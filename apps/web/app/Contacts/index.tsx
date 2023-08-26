@@ -1,16 +1,18 @@
 'use client'
 import { useMemo, useEffect, useState } from 'react'
 import { BsFillPersonFill } from 'react-icons/bs'
+import { HiOutlineDocumentDuplicate } from 'react-icons/hi'
 import { Button } from 'ui'
 
 import { useContactsStore } from '@/store'
 import UpdateContactModal from '@/container/UpdateContactModal'
 
-import { useDelContact } from './hooks'
+import { useDelContact, useDuplicateContact } from './hooks'
 import type { IContact } from 'api/server/types'
 
 const Contact = ({ contact }: { contact: IContact }) => {
   const [showEdit, setShowEdit] = useState(false)
+  const { duplicateContact, loading: duplicataLoading } = useDuplicateContact(contact)
   const { trigger: delContact, success, error } = useDelContact()
 
   const handleDelContact = async () => {
@@ -24,13 +26,18 @@ const Contact = ({ contact }: { contact: IContact }) => {
       <div className='p-3 border shadow w-full'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center'>
-            <BsFillPersonFill color='#4c9eea' size='2rem' />
+            <BsFillPersonFill className='mr-2' color='#4c9eea' size='2rem' />
             <div> {`${contact.first_name} ${contact.last_name}`} </div>
           </div>
 
-          <div className='flex flex-col space-y-2'>
-            <Button variant='primaryXs' onClick={() => setShowEdit(true)}> Edit </Button>
-            <Button variant='primaryXs' onClick={handleDelContact}> Delete </Button>
+          <div className='flex'>
+            <Button variant='icon' loading={duplicataLoading} onClick={duplicateContact}>
+              <HiOutlineDocumentDuplicate color='#666666' size='1rem' />
+            </Button>
+            <div className='flex flex-col space-y-2'>
+              <Button variant='primaryXs' onClick={() => setShowEdit(true)}> Edit </Button>
+              <Button variant='primaryXs' onClick={handleDelContact}> Delete </Button>
+            </div>
           </div>
         </div>
 
@@ -59,7 +66,7 @@ export default function Contacts({ contacts }: { contacts: IContact[] }) {
   }, [state.sort, state.contacts, contacts])
 
   return (
-    <div className='grid gap-3 px-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
+    <div className='grid gap-3 px-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
       {
         _contacts.map(contact => <Contact contact={contact} key={contact.id} />)
       }
